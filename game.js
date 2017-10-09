@@ -1330,7 +1330,7 @@
                         blacklisted: !1
                     },
                     more_games: {
-                        label: "more_games",
+                        label: "",
                         image: null,
                         url: "http://www.a10.com",
                         style: "",
