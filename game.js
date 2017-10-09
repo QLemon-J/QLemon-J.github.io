@@ -1307,7 +1307,7 @@
                 branding: {
                     main: {
                         label: "main",
-                        image: "http://www8.agame.com/mirror/img/logo_A10_202x50.png",
+                        image: "",
                         url: "http://www.a10.com",
                         style: "",
                         width: "202",
