@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=0.9, minimum-scale=0.9, maximum-scale=0.9, user-scalable=no">
+	<title>记忆盒子</title>
+	<script>document.domain = '4399.com';</script>
+
+	<style type="text/css">
+		html,body {
+			background-color: #000;
+			color: #fff;
+			font-family: helvetica, arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			font-size: 12pt;
+		}
+
+		/*body { min-height: 480px; }*/
+
+
+		#canvas {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			border: 1px solid #555;
+			z-index: -1;
+			width: 100%;
+		}
+
+		#rotate {
+			width: 125px;
+			height: 180px;
+			position: fixed;
+			margin: auto;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			display: none;
+		}
+
+		#ad {
+			bottom: 0;
+			position: fixed;
+			display: block;
+			width: 320px;
+			height: 50px;
+			margin: 0 auto;
+		}
+	</style>
+
+<link rel="shortcut icon" href="icon.png">
+</head>
+<body>
+
+	<canvas id="canvas"></canvas>
+	<img id="rotate" src="media/rotate.png" alt="rotate"/>
+
+	<script type="text/javascript" src="memorybox.js"></script> 
+	<script type="text/javascript">
+		$(window).resize(function() {
+			var ww = $(window).width(), wh = $(window).height();
+			var ratio = 480/610;
+			if (ww/wh > ratio) {
+				$("#canvas").height(wh);
+				$("#canvas").width(wh*ratio);
+			} else {
+				$("#canvas").width(ww);
+				$("#canvas").height(ww/ratio);
+			}
+		})
+	</script>
+	<script type="text/javascript">
+		btGame.onlyVScreen();
+		btGame.playLogoAdv();
+		window.addEventListener("orientationchange", function() {
+			window.location.reload();
+		});
+	</script>
+</body>
+</html>
