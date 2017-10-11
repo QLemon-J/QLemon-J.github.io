@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+   
+<head>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="viewport" content="initial-scale=1.0,width=device-width,user-scalable=no" />
+    
+    <title>Play Fracture on A10.com</title>
+
+    <meta property="og:title" content="Fracture">
+    <meta property="game:id" content="576742227280291466">
+    <meta property="game:gid" content="157322">
+    <meta property="game:lid" content="1640">
+
+    <link href="styles.css?v=1.0.1" rel="stylesheet" type="text/css" />
+    <script src="./createjs-2013.09.25.min.js"></script>
+    <script src="./game.js"></script>
+    
+    <script src=        "js/modernizr.js?v=1.0.4"></script>
+    <script src=      "js/PageManager.js?v=1.0.5"></script>
+    <script src=             "js/Game.js?v=1.0.4"></script>
+    <script src=        "js/GamePoint.js?v=1.0.4"></script>
+    <script src=             "js/Line.js?v=1.0.4"></script>
+    <script src=           "js/Player.js?v=1.0.6"></script>
+    <script src=            "js/Glass.js?v=1.0.4"></script>
+    <script src=          "js/WinLose.js?v=1.0.4"></script>
+    <script src=            "js/enemy.js?v=1.0.4"></script>
+    <script src=           "js/Bumper.js?v=1.0.4"></script>
+    <script src=      "js/StageScreen.js?v=1.0.4"></script>
+    <script src=      "js/StartScreen.js?v=1.0.4"></script>
+    <script src=           "js/button.js?v=1.0.4"></script>
+    <script src=      "js/PlayerStats.js?v=1.0.4"></script>
+    <script src=          "js/powerup.js?v=1.0.4"></script>
+    <script src=      "js/HelpDisplay.js?v=1.0.4"></script>
+    <script src=       "js/iconButton.js?v=1.0.4"></script>
+    <script src=          "js/Credits.js?v=1.0.4"></script>
+    <script src=      "js/rotateBlock.js?v=1.0.4"></script>
+
+    
+    <script src="./play.js"></script>
+
+    
+</head>
+
+<body>
+    
+    <span class="font-loader">
+        <span class="embedded-font-regular"><!-- / --></span>
+    </span>
+    
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    
+    <script>
+        
+        var soundPath = "sound/";
+        var soundsLoaded = 0;
+        
+        createjs.Sound.alternateExtentions = ["m4a"];
+        
+        var manifest = [
+            //{id:"background", src:soundPath + "background_loop.aac"},
+            {id:"button", src:soundPath + "button_select.mp4"},
+            {id:"fail", src:soundPath + "level_fail.mp4"},
+            {id:"start", src:soundPath + "level_start.mp4"},
+            {id:"success", src:soundPath + "level_success.mp4"},
+            {id:"break1", src:soundPath + "line_connect_break_v1.mp4"},
+            {id:"break2", src:soundPath + "line_connect_break_v2.mp4"},
+            {id:"crossFirst", src:soundPath + "line_connection_success.mp4"},
+            {id:"crossSecond", src:soundPath + "line_connection_warning.mp4"},
+            {id:"death", src:soundPath + "player_death.mp4"},
+            {id:"glassBreak", src:soundPath + "polygon_fill_break.mp4"},
+            {id:"glassFill1", src:soundPath + "polygon_fill_success_v1.mp4"},
+            {id:"glassWarning2", src:soundPath + "polygon_warning_fill_v2.mp4"},
+            //{id:"lightweight", src:soundPath + "powerup_v1.mp4"},
+            //{id:"shield", src:soundPath + "powerup_v2.mp4"},
+            {id:"score1", src:soundPath + "score_counter_01.mp4"},
+            {id:"score2", src:soundPath + "score_counter_02.mp4"},
+            {id:"score3", src:soundPath + "score_counter_03.mp4"},
+            {id:"score4", src:soundPath + "score_counter_04.mp4"},
+            {id:"score5", src:soundPath + "score_counter_05.mp4"},
+            {id:"score6", src:soundPath + "score_counter_06.mp4"},
+            {id:"score7", src:soundPath + "score_counter_07.mp4"},
+            {id:"score8", src:soundPath + "score_counter_08.mp4"},
+            {id:"score9", src:soundPath + "score_counter_09.mp4"},
+            {id:"score10", src:soundPath + "score_counter_10.mp4"},
+            {id:"score11", src:soundPath + "score_counter_11.mp4"},
+            {id:"score12", src:soundPath + "score_counter_12.mp4"},
+            {id:"score13", src:soundPath + "score_counter_13.mp4"},
+            {id:"bumper", src:"images/bumperimage.png?v=5"},
+            {id:"starfield", src:"images/background_01_small.jpg"},
+            {id:"gamelogo", src:"images/Fracture_logo_LG.png"},
+            {id:"home", src:"images/home-icon.png?v=2"},
+            {id:"next", src:"images/next.png?v=2"},
+            {id:"back", src:"images/back.png"},
+            {id:"mute", src:"images/sound.png?v=2"},
+            {id:"restart", src:"images/restart.png?v=2"}
+            
+        ];
+        for(var i = 1; i <= 24; i++){
+            var level = {id:"level" + i, src:"levels/level" + i + ".json"};
+            manifest.push(level);
+        }
+        
+        var preloader;
+        var canvas;
+        var stage;
+        var pageManager;
+        var logo;
+        var startScreen;
+        var link;
+        var spilImage;
+        var moreGames;
+        
+        var rotateBlock;
+        
+        window.onload = function(){
+            canvas = document.getElementById('canvas');
+            stage = new createjs.Stage('canvas');
+            
+            
+            //load gameAPI
+            
+            GameAPI.loadAPI(function(API){
+                
+                
+                logo = API.Branding.getLogo();
+                console.log(logo);
+                moreGames = API.Branding.getLink("more_games");
+                console.log(moreGames);
+                
+                spilImage = new createjs.Bitmap(logo.image);
+                spilImage.regX = 175;
+                spilImage.regY = 50;
+                spilImage.x = canvas.width;
+                spilImage.y = canvas.height;
+                stage.addChild(spilImage);
+                resizeWindow();
+            });
+            
+            
+            //quickStart();
+            resizeWindow();
+            
+            startScreen = new StartScreen();
+            stage.addChild(startScreen);
+            
+            rotateBlock = new RotateBlock(canvas.width,canvas.height);
+            stage.addChild(rotateBlock);
+            
+            
+            preloader = new createjs.LoadQueue();
+            preloader.installPlugin(createjs.Sound);
+            preloader.addEventListener("complete", handleLoad);
+            preloader.addEventListener("progress", progressBar);
+            preloader.loadManifest(manifest);
+            
+            
+            
+            
+            
+            window.addEventListener( 'resize', function(e){
+                console.log("user resize");
+                resizeWindow();
+                rotateBlock.scale(canvas.width,canvas.height);
+                pageManager.updatePageDisplays(canvas.width, canvas.height);
+            });
+            
+        }
+        
+        function handleLoad(e){
+            quickStart();
+            
+        }
+        
+        function progressBar(e){
+            startScreen.update(e,stage);
+            stage.update();
+        }
+        
+        function quickStart()
+        {
+            stage.removeChild(rotateBlock);
+            stage.removeChild(startScreen);
+            
+            
+            //alert("standalone test:"+window.navigator.standalone);
+            console.log("standalone:"+window.navigator.standalone);
+                
+            resizeWindow();
+            pageManager = new PageManager(canvas.width, canvas.height, preloader, startScreen);
+            stage.addChild(pageManager);
+            
+        
+           
+            //adds touch support
+            if (Modernizr.touch){
+                console.log("touch");
+                canvas.addEventListener( 'touchstart', mouseDown, false );
+                canvas.addEventListener( 'touchmove', mouseMove, false);
+                canvas.addEventListener( 'touchend', mouseUp, false);
+            }
+            else
+            {
+                console.log("mouse");
+                 //add event listeners to stage or window
+                canvas.addEventListener( 'mousedown', mouseDown, false );
+                canvas.addEventListener( 'mousemove', mouseMove, false);
+                canvas.addEventListener( 'mouseup', mouseUp, false);
+            }
+        
+            stage.removeChild(spilImage);
+            stage.addChild(spilImage);
+            stage.addChild(rotateBlock);
+            
+            createjs.Ticker.addEventListener("tick", animate);
+            createjs.Ticker.setFPS(60);
+            
+            animationFrame(animate);
+        }
+        
+        function mouseDown(e){
+            e.preventDefault(); 
+            if(rotateBlock.visible) return;
+            var mouseX = 0;
+            var mouseY = 0;
+        
+            if(e.touches){
+                mouseX += e.touches[0].clientX;
+                mouseY += e.touches[0].clientY;
+            }
+            else{
+                mouseX += e.clientX;
+                mouseY += e.clientY;
+            }
+            
+            if(spilImage != undefined && mouseX > canvas.width - 150 * spilImage.scaleX && mouseY > canvas.height - 50 * spilImage.scaleY){
+                console.log("run logo.action()");
+                logo.action();
+            }
+            
+            pageManager.mouseDown(mouseX,mouseY);
+            
+            
+        }
+        
+        function mouseUp(e){
+            e.preventDefault(); 
+            if(rotateBlock.visible) return;
+            var mouseX = 0;
+            var mouseY = 0;
+            if(e.touches){
+                mouseX += e.touches[0].clientX;
+                mouseY += e.touches[0].clientY;
+            }
+            else{
+                mouseX += e.clientX;
+                mouseY += e.clientY;
+            }
+            
+            pageManager.mouseUp(mouseX,mouseY);
+        }
+        
+        function mouseMove(e){
+            e.preventDefault();
+            if(rotateBlock.visible) return;
+            var mouseX = 0;
+            var mouseY = 0;
+            if(e.touches){
+                mouseX += e.touches[0].clientX;
+                mouseY += e.touches[0].clientY;
+            }
+            else{
+                mouseX += e.clientX;
+                mouseY += e.clientY;
+            }
+            var hover = pageManager.mouseMove(mouseX,mouseY);
+            if(spilImage != undefined && mouseX > canvas.width - 150 * spilImage.scaleX && mouseY > canvas.height - 50 * spilImage.scaleY || hover){
+                canvas.style.cursor = "pointer";
+            }
+            else canvas.style.cursor = "default";
+            
+        }
+        
+        var animationFrame = window.requestAnimationFrame 
+            || window.webkitRequestAnimationFrame
+            || window.mozRequestAnimationFrame
+            || window.oRequestAnimationFrame
+            || window.msRequestAnimationFrame
+            || function(callback){setTimeout(callback, 1000/60); };
+        
+        function animate(e){
+            //update game logic
+            if(!rotateBlock.visible) pageManager.Update();
+            
+            //update draw call
+            stage.update();
+        }
+        
+        
+        function resizeWindow()
+        {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            if(spilImage){
+                spilImage.x = canvas.width;
+                spilImage.y = canvas.height;
+                var scale = canvas.width > canvas.height ? canvas.height / 13.6 / 50: canvas.width / 4 / 170;
+                
+                spilImage.scaleY = spilImage.scaleX = scale;
+            }
+        }
+        
+        function requestGameBreak(game){
+            console.log("gameBreak requested");
+            GameAPI.GameBreak.request(game.pause, game.resume);
+        }
+        
+    </script>
+    <script>a10.play.init();</script>
+</body>
+</html>
