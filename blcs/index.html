@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang=en>
+<head>
+	<title>暴力车手</title>
+	<meta charset=utf-8>
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<link rel="apple-touch-startup-image" href="/gfx/iphonestartup.png" />
+	<link rel="stylesheet" type="text/css" href="iphone2.css" media="only screen and (max-width: 480px)" />
+	<link rel="stylesheet" type="text/css" href="desktop.css" media="screen and (min-width: 481px)" />
+	<link rel="apple-touch-icon" href="/gfx/appleicon.png" />
+	<link rel="stylesheet" type="text/css" href="font.css" />
+	<script type="application/x-javascript" src="jquery-1.6.2.min.js"></script>
+	<script type="application/x-javascript" src="audio.js"></script>
+	<script type="application/x-javascript" src="textdata.js"></script>
+	<script type="application/x-javascript" src="library.js"></script>
+	<script type="application/x-javascript" src="classlib.js"></script>
+	<script type="application/x-javascript" src="resources.js"></script>
+	<script type="application/x-javascript" src="data.js"></script>
+	<script type="application/x-javascript" src="game.js"></script>
+	<script type="application/x-javascript" src="aselect.js"></script>
+</head>
+<body onload="init();" onkeydown="scanInput(event);" onkeyup="stopMove(event);">
+	<div id="game">
+		<canvas width="320" height="480"></canvas>
+		<div id="banad"></div>
+		<div id="console"></div>
+	</div>
+	<div id="orientate"><img src="library/orientate.png" /></div>
+
+</body>
+</html>
