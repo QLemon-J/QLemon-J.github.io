@@ -1047,7 +1047,7 @@
                     branding: {
                         main: {
                             label: "main",
-                            image: "./img/logo_A10_202x50.png",
+                            image: "",
                             url: "http://www.a10.com",
                             style: "",
                             width: "202",
@@ -1059,7 +1059,7 @@
                         },
                         logo: {
                             label: "logo",
-                            image: "./img/logo_A10_202x50.png",
+                            image: "",
                             url: "http://www.a10.com",
                             style: "",
                             width: "202",
