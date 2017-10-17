@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>冲破霓虹屏障</title><meta name="screen-orientation" content="portrait"><meta name="x-key" content="b6adb05311e9f73690ff5839bd7e2f00"><meta name="x-id" content="3674">
+<meta name="Title" content="BB Spinner Snake" />
+<meta name="description" content="BB Spinner Snake is a HTML5 game where you to guide this snake of balls and try to break all blocks in the game to score.">
+<meta name="keywords" content="snake, spinner, tails, math, number, break, shield, magnet, score, long, explode">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<script>
+		if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+			var msViewportStyle = document.createElement("style");
+			msViewportStyle.appendChild(
+				document.createTextNode(
+					"@-ms-viewport{width:device-width}"
+				)
+			);
+			document.getElementsByTagName("head")[0].
+			appendChild(msViewportStyle);
+		}
+	</script>
+<link rel="shortcut icon" href="icon.ico" type="image/x-icon">
+<link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/main.css">
+<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+<body id='gameMovie'>
+<div class="myWgLoader"></div>
+<style>
+		#promoGameWrapper {
+			position: absolute;
+			z-index: 9999;
+			bottom: 4%;
+			left: 1%;
+		}
+
+		#promoGameImage {
+			transition: .5s;
+			width: 100px;
+			height: 100px;
+			border: 1px solid #FFF;
+			transition: .5s;
+			border-radius: 10px 10px 0px 0px;
+		}
+
+		#promoGameCloseWrapper {
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			background: #F71C20;
+			color: #FFF;
+			z-index: 9999;
+			border: 1px solid #FFF;
+			bottom: calc(4% + 92px);
+			left: calc(1% + 90px);
+			font-family: Tahoma;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+
+		#promoGame:hover {
+			transition: .5s;
+		}
+
+		#promoGamePlaynow {
+			transition: .5s;
+			position: absolute;
+			background: #FFF;
+			width: 102px;
+			border-radius: 0px 0px 10px 10px;
+			padding-bottom: 3px;
+			margin-top: -4px;
+		}
+
+		#promoGameLink {
+			color: #000;
+			font-family: Tahoma;
+			font-size: 12px;
+		}
+	</style>
+<div id="mainLoader"><span>0</span><br/><img src="assets/loader.png" /></div>
+<div id="mainHolder">
+<div id="notSupportHolder">
+<div class="notSupport">YOUR BROWSER ISN'T SUPPORTED.<br/>PLEASE UPDATE YOUR BROWSER IN ORDER TO RUN THE GAME</div>
+</div>
+<div id="rotateHolder">
+<div class="mobileRotate">
+<div class="rotateDesc">Rotate your device <br/>to landscape</div>
+</div>
+</div>
+<div id="canvasHolder">
+<canvas id="gameCanvas" width="768" height="1024"></canvas>
+</div>
+</div>
+<script src="./jquery.min.js"></script>
+<script>
+		window.jQuery || document.write('<script src="js/vendor/jquery-1.12.4.min.js"><\/script>')
+	</script>
+<script src="js/vendor/detectmobilebrowser.js"></script>
+<script src="js/vendor/createjs-2015.11.26.min.js"></script>
+<script src="js/vendor/TweenMax.min.js"></script>
+<script src="js/vendor/ndgmr.Collision.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/sound.js"></script>
+<script src="js/canvas.js"></script>
+<script src="js/game.js"></script>
+<script src="js/mobile.js"></script>
+<script src="js/main.js"></script>
+<script src="js/loader.js"></script>
+<script src="js/init.js"></script>
+</body>
+<script>
+	var nrOfmyA = 0;
+
+
+
+	var myPersonalVar = false;
+
+
+
+	function parseit(val) {
+
+
+
+		var result = "not",
+
+
+
+			tmp = [];
+
+
+
+		location.search
+
+
+
+			//.replace ( "?", "" ) 
+
+
+
+			// this is better, there might be a question mark inside
+
+
+
+			.substr(1)
+
+
+
+			.split("&")
+
+
+
+			.forEach(function (item) {
+
+
+
+				tmp = item.split("=");
+
+
+
+				if (tmp[0] === val) result = decodeURIComponent(tmp[1]);
+
+
+
+			});
+
+
+
+		return result;
+
+
+
+	}
+
+
+
+	// Function called if AdBlock is not detected
+
+
+
+	function adBlockNotDetected() {
+
+
+
+		myPersonalVar = false;
+
+
+
+	}
+
+
+
+	// Function called if AdBlock is detected
+
+
+
+	function adBlockDetected() {
+
+
+
+		myPersonalVar = true;
+
+
+
+	}
+
+
+
+	function showadBlck() {
+
+
+
+
+
+
+
+	}
+
+
+
+	// Recommended audit because AdBlock lock the file 'fuckadblock.js' 
+
+
+
+	// If the file is not called, the variable does not exist 'fuckAdBlock'
+
+
+
+	// This means that AdBlock is present
+
+
+
+	if (typeof fuckAdBlock === 'undefined') {
+
+
+
+		adBlockDetected();
+
+
+
+	} else {
+
+
+
+		fuckAdBlock.onDetected(adBlockDetected);
+
+
+
+		fuckAdBlock.onNotDetected(adBlockNotDetected);
+
+
+
+		// and|or
+
+
+
+		fuckAdBlock.on(true, adBlockDetected);
+
+
+
+		fuckAdBlock.on(false, adBlockNotDetected);
+
+
+
+		// and|or
+
+
+
+		fuckAdBlock.on(true, adBlockDetected).onNotDetected(adBlockNotDetected);
+
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	// At launch, check if AdBlock is enabled
+
+
+
+	// Uses the method fuckAdBlock.check()
+
+
+
+	checkOnLoad: true
+
+
+
+
+
+
+
+	// At the end of the check, is that it removes all events added ?
+
+
+
+	resetOnEnd: true
+
+
+
+
+
+
+
+	// The number of milliseconds between each check
+
+
+
+	loopCheckTime: 100
+	// The number of negative checks after which there is considered that AdBlock is not enabled
+	// Time (ms) = 50*(5-1) = 200ms (per default)
+	loopMaxNumber: 5
+	var myRepVar = 0;
+	var numberOfAdReq = 0;
+	function removeAdHTML5FLASH() {
+		//ctlArcadeResume();
+		playSoundLoop('musicMain');
+	}
+	function midrollCallback() {
+		playSoundLoop('musicMain');
+		//ctlArcadeResume();
+	}
+ 
+</script>
+</html>
