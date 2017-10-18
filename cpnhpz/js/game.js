@@ -72,7 +72,7 @@ var resultScoreText = '[NUMBER]PTS'; //result score text
 
 var shareEnable = true; //toggle share
 
-var shareText = 'SHARE YOUR SCORE'; //social share message
+var shareText = ''; //social share message
 
 var shareTitle = 'Highscore on BB Spinner is [SCORE]PTS.';//social share score title
 
