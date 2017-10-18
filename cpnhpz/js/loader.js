@@ -44,9 +44,9 @@ function initPreload(){
 			{src:'assets/gradient.png', id:'gradient'},
 			
 			{src:'assets/button_replay.png', id:'buttonReplay'},
-			// {src:'assets/button_facebook.png', id:'buttonFacebook'},
-			// {src:'assets/button_twitter.png', id:'buttonTwitter'},
-			// {src:'assets/button_google.png', id:'buttonGoogle'},
+			{src:'assets/button_facebook.png', id:'buttonFacebook'},
+			{src:'assets/button_twitter.png', id:'buttonTwitter'},
+			{src:'assets/button_google.png', id:'buttonGoogle'},
 			{src:'assets/button_fullscreen.png', id:'buttonFullscreen'},
 			{src:'assets/button_sound_on.png', id:'buttonSoundOn'},
 			{src:'assets/button_sound_off.png', id:'buttonSoundOff'}];

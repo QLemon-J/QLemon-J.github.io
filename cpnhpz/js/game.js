@@ -70,7 +70,7 @@ var resultScoreText = '[NUMBER]PTS'; //result score text
 
 //Social share, [SCORE] will replace with game score
 
-var shareEnable = true; //toggle share
+var shareEnable = false; //toggle share
 
 var shareText = ''; //social share message
 
