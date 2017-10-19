@@ -1,0 +1,17 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    background-image: url(img/bodybghex.png);
+    background-repeat: repeat;
+    background-position: center;
+    background-color: #EEEEEE;
+    overflow: hidden;
+}
+canvas {
+    display: block;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+}
