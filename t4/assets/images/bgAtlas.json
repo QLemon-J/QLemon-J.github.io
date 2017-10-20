@@ -1,0 +1,66 @@
+{"frames": [
+
+{
+	"filename": "deal",
+	"frame": {"x":5,"y":7,"w":1344,"h":304},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1344,"h":304},
+	"sourceSize": {"w":1344,"h":304},
+	"pivot": {"x":0,"y":0}
+},
+{
+	"filename": "elice-cover1",
+	"frame": {"x":1600,"y":381,"w":177,"h":321},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":112,"y":21,"w":177,"h":321},
+	"sourceSize": {"w":369,"h":372},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "elice-cover2",
+	"frame": {"x":1355,"y":5,"w":369,"h":370},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":0,"w":369,"h":370},
+	"sourceSize": {"w":369,"h":372},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "elice-cover3",
+	"frame": {"x":1345,"y":467,"w":249,"h":338},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":97,"y":34,"w":249,"h":338},
+	"sourceSize": {"w":369,"h":372},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "iarba",
+	"frame": {"x":5,"y":315,"w":1344,"h":146},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1344,"h":146},
+	"sourceSize": {"w":1344,"h":146},
+	"pivot": {"x":0.5,"y":0.5}
+},
+{
+	"filename": "munti",
+	"frame": {"x":5,"y":470,"w":1334,"h":416},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1334,"h":416},
+	"sourceSize": {"w":1334,"h":416},
+	"pivot": {"x":0.5,"y":0.5}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "bgAtlas",
+	"format": "RGBA8888",
+	"size": {"w":1782,"h":888},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:932943bbe1ad3bdcb2b2cb9bdde4dbd5:8378845338d2a8f3300890b4b05771c3:cb62a40fa25e99cca60d66216efe608e$"
+}
+}

@@ -1,0 +1,206 @@
+{
+	"assets": {
+		"cover": {
+			"type": "image"
+			, "source": "assets/images/Cover.jpg"
+		}
+		, "planeSpritesheet": {
+			"type": "spritesheet"
+			, "source": "assets/images/planeSpritesheet.png"
+			, "frame_width": 44
+			, "frame_height": 30
+			, "frames": 14
+			, "margin": 0
+			, "spacing": 0
+		}
+		, "explosionSpritesheet": {
+			"type": "spritesheet"
+			, "source": "assets/images/explosion.png"
+			, "frame_width": 73
+			, "frame_height": 72
+			, "frames": 10
+			, "margin": 0
+			, "spacing": 0
+		}
+		, "worldMap": {
+			"type": "image"
+			, "source": "assets/images/jpg/world-map.jpg"
+		}
+        , "bgTransition": {
+			"type": "image"
+			, "source": "assets/images/jpg/bgTransition.jpg"
+		}
+		, "atlas": {
+			"type": "atlas"
+			, "sourceJson": "assets/images/atlas.json"
+			, "source": "assets/images/atlas.png"
+		}
+        
+		, "gameAtlas": {
+			"type": "atlas"
+			, "sourceJson": "assets/images/gameAtlas.json"
+			, "source": "assets/images/gameAtlas.png"
+		}
+		, "bgAtlas": {
+			"type": "atlas"
+			, "sourceJson": "assets/images/bgAtlas.json"
+			, "source": "assets/images/bgAtlas.png"
+		}
+		, "level_tilemap1": {
+			"type": "tilemap"
+			, "source": "assets/maps/level1_map.json"
+		}
+		, "level_tilemap2": {
+			"type": "tilemap"
+			, "source": "assets/maps/level2_map.json"
+		}
+		, "level_tilemap3": {
+			"type": "tilemap"
+			, "source": "assets/maps/level3_map.json"
+		}
+		, "level_tilemap4": {
+			"type": "tilemap"
+			, "source": "assets/maps/level4_map.json"
+		}
+		, "level_tilemap5": {
+			"type": "tilemap"
+			, "source": "assets/maps/level5_map.json"
+		}
+		, "level_tilemap6": {
+			"type": "tilemap"
+			, "source": "assets/maps/level6_map.json"
+		}
+		, "level_tilemap7": {
+			"type": "tilemap"
+			, "source": "assets/maps/level7_map.json"
+		}
+		, "level_tilemap8": {
+			"type": "tilemap"
+			, "source": "assets/maps/level8_map.json"
+		}
+		, "level_tilemap9": {
+			"type": "tilemap"
+			, "source": "assets/maps/level9_map.json"
+		}
+		, "level_tilemap10": {
+			"type": "tilemap"
+			, "source": "assets/maps/level10_map.json"
+		}
+		, "level_tilemap11": {
+			"type": "tilemap"
+			, "source": "assets/maps/level11_map.json"
+		}
+		, "level_tilemap12": {
+			"type": "tilemap"
+			, "source": "assets/maps/level12_map.json"
+		}
+		, "level_tilemap13": {
+			"type": "tilemap"
+			, "source": "assets/maps/level13_map.json"
+		}
+		, "level_tilemap14": {
+			"type": "tilemap"
+			, "source": "assets/maps/level14_map.json"
+		}
+		, "level_tilemap15": {
+			"type": "tilemap"
+			, "source": "assets/maps/level15_map.json"
+		}
+		, "level_tilemap16": {
+			"type": "tilemap"
+			, "source": "assets/maps/level16_map.json"
+		}
+		, "level_tilemap17": {
+			"type": "tilemap"
+			, "source": "assets/maps/level17_map.json"
+		}
+		, "level_tilemap18": {
+			"type": "tilemap"
+			, "source": "assets/maps/level18_map.json"
+		}
+		, "level_tilemap19": {
+			"type": "tilemap"
+			, "source": "assets/maps/level19_map.json"
+		}
+		, "level_tilemap20": {
+			"type": "tilemap"
+			, "source": "assets/maps/level20_map.json"
+		}
+        , "level_tilemap21": {
+			"type": "tilemap"
+			, "source": "assets/maps/level21_map.json"
+		}
+		, "music": {
+			"type": "audio"
+			, "source": "assets/audio/s_music.mp3"
+		}
+		, "airplane": {
+			"type": "audio"
+			, "source": "assets/audio/airplane.mp3"
+		}
+        , "airplaneBoost": {
+			"type": "audio"
+			, "source": "assets/audio/airplaneBoost.mp3"
+		}
+		, "button_down": {
+			"type": "audio"
+			, "source": "assets/audio/button_down.mp3"
+		}
+		, "explosion1": {
+			"type": "audio"
+			, "source": "assets/audio/explosion1.mp3"
+		}
+        , "explosion2": {
+			"type": "audio"
+			, "source": "assets/audio/explosion2.mp3"
+		}
+		, "checkCircle": {
+			"type": "audio"
+			, "source": "assets/audio/checkCircle.mp3"
+		}
+        , "coins": {
+			"type": "audio"
+			, "source": "assets/audio/coin.mp3"
+		}
+        , "levelWin": {
+			"type": "audio"
+			, "source": "assets/audio/levelWin.mp3"
+		}
+        , "levelLose": {
+			"type": "audio"
+			, "source": "assets/audio/levelLose.mp3"
+		}
+	}
+	, "groups": [
+        "levelProperties"
+        , "background"
+		, "clouds"
+	 	, "circlesUp"
+        , "circlesUpHorizontal"
+        , "circlesUpGround"
+        , "circlesUpHorizontalGround"
+	 	, "emitters"
+	 	, "coinsUp"
+        , "coins"
+        , "players"
+        , "elemFly"
+	 	, "elemGround"
+        , "ground"
+	 	, "elemFlySlow"
+        , "circles"
+        , "circlesHorizontal"
+        , "circlesGround"
+        , "circlesHorizontalGround"
+        , "maskBg"
+        , "tutorial"
+	 	, "hud"
+	  	, "buttons"
+
+    ]
+	, "map": {
+		"key": ["level_tilemap1", "level_tilemap2", "level_tilemap3", "level_tilemap4", "level_tilemap5", "level_tilemap6", "level_tilemap7", "level_tilemap8", "level_tilemap9", "level_tilemap10"
+            , "level_tilemap11", "level_tilemap12", "level_tilemap13", "level_tilemap14", "level_tilemap15", "level_tilemap16", "level_tilemap17", "level_tilemap18", "level_tilemap19", "level_tilemap20", "level_tilemap21"]
+		, "active_key": []
+		, "tilesets": ["map_tiles", "map_tiles"]
+	}
+}
